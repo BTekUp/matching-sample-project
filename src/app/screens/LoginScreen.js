@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, createRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,6 +10,9 @@ import {
 import colors from "../shared/colors";
 
 function LoginScreen(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
