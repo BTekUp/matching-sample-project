@@ -4,6 +4,7 @@ import React from 'react';
 
 import HomeScreen from './HomeScreen';
 import MatchesScreen from './MatchesScreen';
+import users from '../../assets/data/users';
 
 const Tab = createBottomTabNavigator();
 

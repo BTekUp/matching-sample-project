@@ -1,14 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
 import MainTabScreen from './src/app/screens/MainTabScreen';
 import RootStackScreen from './src/app/screens/RootStackScreen';
+import users from './src/assets/data/users';
 
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <RootStackScreen /> */ }
+      {/* <RootStackScreen /> */  }
        <MainTabScreen /> 
     </NavigationContainer>
   );
