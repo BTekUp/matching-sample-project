@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -6,10 +7,11 @@ import RootStackScreen from './src/app/screens/RootStackScreen';
 import users from './src/assets/data/users';
 
 export default function App() {
+
   return (
     <NavigationContainer>
       {/* <RootStackScreen /> */  }
-       <MainTabScreen /> 
+          <MainTabScreen /> 
     </NavigationContainer>
   );
 }
