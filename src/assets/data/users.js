@@ -1,35 +1,35 @@
 export default [
   {
     id: '1',
-    name: 'Vadim Savin',
+    name: 'Joseph Skaff',
     image:
       'https://picsum.photos/200/300',
-    bio: 'I will be the semicolons to your code',
+    bio: 'hi my name is joseph',
   },
   {
     id: '2',
-    name: 'Elon Musk',
+    name: 'Michael kozah',
     image:
       'https://picsum.photos/200/300',
-    bio: 'A dude with a rocket is looking for a gal with fuel',
+    bio: 'hi my name is michael',
   },
   {
     id: '3',
-    name: 'Zuck',
+    name: 'william',
     image:
       'https://picsum.photos/200/300',
-    bio: 'No need to send me your nudes, I already saw them',
+    bio: 'hi my name is william',
   },
   {
     id: '4',
-    name: 'Jeffrey Bezos',
+    name: 'remy',
     image:
       'https://picsum.photos/200/300',
-    bio: 'CEO, entrepreneur born in 1964, Jeffrey, Jeffrey Bezos',
+    bio: 'hi my name is remy ',
   },
   {
     id: '5',
-    name: 'Vadim Savin',
+    name: 'marilise',
     image:
       'https://picsum.photos/200/300',
     bio: 'Hola',
