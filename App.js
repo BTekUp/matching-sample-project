@@ -8,8 +8,8 @@ import RootStackScreen from './src/app/screens/RootStackScreen';
 export default function App() {
   return (
     <NavigationContainer>
-      <RootStackScreen />
-      {/* <MainTabScreen /> */}
+      
+      <MainTabScreen />
     </NavigationContainer>
   );
 }
