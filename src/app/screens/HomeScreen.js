@@ -22,12 +22,19 @@ const swipeVelocity = 800;
 function HomeScreen(props) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const [nextIndex, setNextIndex] = useState(currentIndex + 1);
+
   const currentProfile = users[currentIndex];
+
   const nextProfile = users[nextIndex];
+
   const { width: screenWidth } =useWindowDimensions();
-  const hiddenTranslateX = 2* screenWidth;  
+
+  const hiddenTranslateX = 2* screenWidth; 
+
   const translateX = useSharedValue(0);
+
   const rotate = useDerivedValue(() => interpolate(
     translateX.value, 
     [0, screenWidth], 
@@ -104,6 +111,7 @@ function HomeScreen(props) {
 
     return (
         <View style={styles.pageContainer} >
+
           {nextProfile && (
           <View style={styles.nextCardContainer}>
             <Animated.View style={[styles.animatedCard, nextCardStyle]}>
