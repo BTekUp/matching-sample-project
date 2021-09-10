@@ -143,11 +143,11 @@ function HomeScreen(props) {
 
            
             <View style={{ flexDirection: "row" ,marginLeft: 20, justifyContent: 'space-evenly' }}>
-              <TouchableOpacity style={[styles.button , {right: 75}]}>
+              <TouchableOpacity style={[styles.button , {right: 80}]}>
                 <FontAwesome name="times" size={27} color="#ff6b81"></FontAwesome>
               </TouchableOpacity>
 
-              <TouchableOpacity style={[styles.button , {left: 55}]}>
+              <TouchableOpacity style={[styles.button , {left: 57}]}>
                   <FontAwesome name="heart" size={27} color="#7bed9f"></FontAwesome>
               </TouchableOpacity>
             </View>
