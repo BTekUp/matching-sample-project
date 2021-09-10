@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Pressable, useWindowDimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, Pressable, useWindowDimensions, TouchableOpacity } from 'react-native';
 import users from '../../assets/data/users';
 import Card from '../components/Card';
 import Animated, { 
@@ -15,6 +15,7 @@ import Animated, {
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import LIKE from '../../assets/images/LIKE.png';
 import nope from '../../assets/images/nope.png';
+import { FontAwesome } from '@expo/vector-icons'
 
 const ROTATION = 60;
 const swipeVelocity = 800;
@@ -29,7 +30,7 @@ function HomeScreen(props) {
 
   const nextProfile = users[nextIndex];
 
-  const { width: screenWidth } =useWindowDimensions();
+  const { width: screenWidth } = useWindowDimensions();
 
   const hiddenTranslateX = 2* screenWidth; 
 
@@ -108,8 +109,8 @@ function HomeScreen(props) {
     setNextIndex(currentIndex + 1);
   }, [currentIndex, translateX]);
 
-
     return (
+
         <View style={styles.pageContainer} >
 
           {nextProfile && (
@@ -139,6 +140,18 @@ function HomeScreen(props) {
                 </Animated.View>
             </PanGestureHandler>  
           )}
+
+           
+            <View style={{ flexDirection: "row" ,marginLeft: 20, justifyContent: 'space-evenly' }}>
+              <TouchableOpacity style={[styles.button , {right: 75}]}>
+                <FontAwesome name="times" size={27} color="#ff6b81"></FontAwesome>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={[styles.button , {left: 55}]}>
+                  <FontAwesome name="heart" size={27} color="#7bed9f"></FontAwesome>
+              </TouchableOpacity>
+            </View>
+
         </View>
     );
 }
@@ -169,6 +182,24 @@ const styles = StyleSheet.create({
       zIndex: 1,
       elevation: 1,
     },
+    button: {
+      width: 50,
+      height: 50,
+      backgroundColor: 'white',
+      borderRadius: 25,
+      justifyContent: 'center',
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.15,
+      shadowRadius: 6.46,
+      elevation: 7,
+      position: 'absolute',
+      marginTop: 10,
+  },
   })
 
 export default HomeScreen;

@@ -1,10 +1,9 @@
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-
+import { FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import HomeScreen from './HomeScreen';
 import MatchesScreen from './MatchesScreen';
-import users from '../../assets/data/users';
 
 const Tab = createBottomTabNavigator();
 
