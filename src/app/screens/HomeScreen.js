@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Pressable, useWindowDimensions } from 'react-native';
-import users from '../../assets/data/users';
+//import users from '../../assets/data/users';
 import Card from '../components/Card';
 import Animated, { 
   useSharedValue,
@@ -15,11 +15,31 @@ import Animated, {
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import LIKE from '../../assets/images/LIKE.png';
 import nope from '../../assets/images/nope.png';
+import baseURL from '../../assets/common/baseUrl';
+import axios from 'axios';
+
 
 const ROTATION = 60;
 const swipeVelocity = 800;
 
 function HomeScreen(props) {
+
+  useEffect(() => {
+    axios
+          .get(`${baseURL}users`)
+          .then((res) => {
+            setUsers(res.data);
+          })
+          .catch((error) => {
+            console.log('Api call error')
+            console.log(error);
+          })
+    return () => {
+      setUsers([]);
+    };
+  }, []);
+
+  const [users, setUsers] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -106,8 +126,8 @@ function HomeScreen(props) {
   useEffect(() => {
     translateX.value = 0;
     setNextIndex(currentIndex + 1);
-  }, [currentIndex, translateX]);
-
+  }, [currentIndex, translateX]
+  );
 
     return (
         <View style={styles.pageContainer} >
@@ -167,7 +187,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       top: 10,
       zIndex: 1,
-      elevation: 1,
+      //elevation: 1,
     },
   })
 
