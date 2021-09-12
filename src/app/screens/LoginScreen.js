@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -102,7 +103,7 @@ function LoginScreen({ navigation }) {
         <View style={styles.buttons}>
           <TouchableOpacity>
             <View style={styles.signInButton}>
-              <Text style={styles.textSign}>Sign In</Text>
+              <Text style={styles.textSign}>Login</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     alignItems: "center",
-    marginTop: 100,
+    marginTop: 50,
   },
   signInButton: {
     width: 200,
