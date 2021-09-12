@@ -12,7 +12,7 @@ import Feather from "react-native-vector-icons/Feather";
 
 import colors from "../shared/colors";
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   const [data, setData] = React.useState({
     username: "",
     password: "",
@@ -38,7 +38,19 @@ function LoginScreen(props) {
     }
   };
 
-  const handlePasswordChange = (val) => {};
+  const handlePasswordChange = (val) => {
+    setData({
+      ...data,
+      password: val,
+    });
+  };
+
+  const togglePasswordVisibilty = () => {
+    setData({
+      ...data,
+      secureTextEntry: !data.secureTextEntry,
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -54,13 +66,13 @@ function LoginScreen(props) {
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.text_footer}>Email</Text>
+        <Text style={styles.text_footer}>Username</Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.prestigeBlue} size={20} />
           <TextInput
-            placeholder="Enter your email"
+            placeholder="Enter your username"
             style={styles.textInput}
-            onChange={(val) => handleUsernameChange(val)}
+            onChangeText={(val) => handleUsernameChange(val)}
           />
           <Feather
             name="check-circle"
@@ -73,11 +85,34 @@ function LoginScreen(props) {
           <Feather name="lock" color={colors.prestigeBlue} size={20} />
           <TextInput
             placeholder="Enter your password"
-            secureTextEntry={true}
+            secureTextEntry={data.secureTextEntry}
             style={styles.textInput}
             autoCapitalize="none"
+            onChangeText={(val) => handlePasswordChange(val)}
           />
-          <Feather name="eye-off" color={colors.prestigeBlue} size={20} />
+          <TouchableOpacity onPress={() => togglePasswordVisibilty()}>
+            <Feather
+              name={data.secureTextEntry ? "eye-off" : "eye"}
+              color={colors.prestigeBlue}
+              size={20}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.buttons}>
+          <TouchableOpacity>
+            <View style={styles.signInButton}>
+              <Text style={styles.textSign}>Sign In</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ marginTop: 30 }}
+            onPress={() => navigation.navigate("Register")}
+          >
+            <View style={styles.registerButton}>
+              <Text style={styles.textSign}>Register</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -91,27 +126,25 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    justifyContent: "center",
-    alignContent: "flex-end",
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 50,
   },
   logo: {
-    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
   footer: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 30,
   },
   text_header: {
-    color: "#fff",
+    color: colors.white,
     fontWeight: "bold",
     fontSize: 30,
   },
@@ -137,26 +170,36 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Platform.OS === "ios" ? 0 : -5,
     paddingLeft: 10,
-    color: "#05375a",
+    color: colors.prestigeBlue,
   },
   errorMsg: {
     color: "#FF0000",
     fontSize: 14,
   },
-  button: {
+  buttons: {
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 100,
   },
-  signIn: {
-    width: "100%",
+  signInButton: {
+    width: 200,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.watermelon,
+    borderRadius: 10,
+  },
+  registerButton: {
+    width: 200,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.twinkleBlue,
     borderRadius: 10,
   },
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
+    color: colors.white,
   },
 });
 
