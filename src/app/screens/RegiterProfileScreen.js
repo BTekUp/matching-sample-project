@@ -13,7 +13,7 @@ import Feather from "react-native-vector-icons/Feather";
 
 import colors from "../shared/colors";
 
-function RegiterProfileScreen({ route }) {
+function RegiterProfileScreen({ route, navigation }) {
   const [state, setState] = React.useState({
     image: null,
   });
@@ -32,7 +32,13 @@ function RegiterProfileScreen({ route }) {
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.text_footer}>Full Name</Text>
+        <View style={styles.upload}>
+          <Image style={styles.image} source={{ uri: state.image }} />
+          <TouchableOpacity style={styles.uploadButton}>
+            <Text>Upload Image</Text>
+          </TouchableOpacity>
+        </View>
+        <Text style={[styles.text_footer, { marginTop: 30 }]}>Full Name</Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.prestigeBlue} size={20} />
           <TextInput
@@ -40,13 +46,6 @@ function RegiterProfileScreen({ route }) {
             style={styles.textInput}
             // onChangeText={(val) => handleUsernameChange(val)}
           />
-        </View>
-        <View style={[styles.text_footer, { marginTop: 30 }]}>
-          <Image style={styles.image} source={{ uri: state.image }} />
-          <Text>Upload Image</Text>
-        </View>
-        <View style={[styles.text_footer, { marginTop: 30 }]}>
-          <Text>Country</Text>
         </View>
         <Text style={[styles.text_footer, { marginTop: 30 }]}>Your Bio</Text>
         <View style={styles.action}>
@@ -56,12 +55,12 @@ function RegiterProfileScreen({ route }) {
             style={styles.multilineTextInput}
             multiline={true}
             // maxLength={10}
-            numberOfLines={5}
+            numberOfLines={4}
             blurOnSubmit={true}
             textAlignVertical="top"
             // onChangeText={(val) => handleUsernameChange(val)}
           />
-          <Text>199/200</Text>
+          <Text>0/200</Text>
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity>
@@ -69,7 +68,10 @@ function RegiterProfileScreen({ route }) {
               <Text style={styles.textSign}>Register</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={{ marginTop: 20 }}>
+          <TouchableOpacity
+            style={{ marginTop: 20 }}
+            onPress={() => navigation.navigate("Register")}
+          >
             <View style={styles.registerButton}>
               <Text style={styles.textSign}>Back</Text>
             </View>
@@ -89,15 +91,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     // paddingHorizontal: 20,
-    // paddingBottom: 50,
+    // paddingBottom: 10,
   },
   logo: {
+    // flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
   footer: {
-    flex: 5,
+    flex: 4,
     backgroundColor: colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -172,6 +175,16 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     backgroundColor: colors.peace,
+  },
+  upload: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  uploadButton: {
+    marginLeft: 30,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: colors.twinkleBlue,
   },
 });
 
