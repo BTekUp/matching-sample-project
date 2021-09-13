@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Platform,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -13,46 +13,11 @@ import Feather from "react-native-vector-icons/Feather";
 
 import colors from "../shared/colors";
 
-function LoginScreen({ navigation }) {
-  const [data, setData] = React.useState({
-    username: "",
-    password: "",
-    check_email: false,
-    secureTextEntry: true,
-    isValidUser: true,
-    isValidPassword: true,
+function RegiterProfileScreen({ route }) {
+  const [state, setState] = React.useState({
+    image: null,
   });
-
-  const handleUsernameChange = (val) => {
-    if (val.length != 0) {
-      setData({
-        ...data,
-        username: val,
-        check_email: true,
-      });
-    } else {
-      setData({
-        ...data,
-        username: val,
-        check_email: false,
-      });
-    }
-  };
-
-  const handlePasswordChange = (val) => {
-    setData({
-      ...data,
-      password: val,
-    });
-  };
-
-  const togglePasswordVisibilty = () => {
-    setData({
-      ...data,
-      secureTextEntry: !data.secureTextEntry,
-    });
-  };
-
+  const { name } = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -67,51 +32,46 @@ function LoginScreen({ navigation }) {
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.text_footer}>Username</Text>
+        <Text style={styles.text_footer}>Full Name</Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.prestigeBlue} size={20} />
           <TextInput
-            placeholder="Enter your username"
+            placeholder="Enter your full name"
             style={styles.textInput}
-            onChangeText={(val) => handleUsernameChange(val)}
-          />
-          <Feather
-            name="check-circle"
-            color={data.check_email ? colors.ufoGreen : colors.prestigeBlue}
-            size={20}
+            // onChangeText={(val) => handleUsernameChange(val)}
           />
         </View>
-        <Text style={[styles.text_footer, { marginTop: 30 }]}>Password</Text>
+        <View style={[styles.text_footer, { marginTop: 30 }]}>
+          <Image style={styles.image} source={{ uri: state.image }} />
+          <Text>Upload Image</Text>
+        </View>
+        <View style={[styles.text_footer, { marginTop: 30 }]}>
+          <Text>Country</Text>
+        </View>
+        <Text style={[styles.text_footer, { marginTop: 30 }]}>Your Bio</Text>
         <View style={styles.action}>
-          <Feather name="lock" color={colors.prestigeBlue} size={20} />
+          <Feather name="info" color={colors.prestigeBlue} size={20} />
           <TextInput
-            placeholder="Enter your password"
-            secureTextEntry={data.secureTextEntry}
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(val) => handlePasswordChange(val)}
+            placeholder="Enter a Bio"
+            style={styles.multilineTextInput}
+            multiline={true}
+            // maxLength={10}
+            numberOfLines={5}
+            blurOnSubmit={true}
+            textAlignVertical="top"
+            // onChangeText={(val) => handleUsernameChange(val)}
           />
-          <TouchableOpacity onPress={() => togglePasswordVisibilty()}>
-            <Feather
-              name={data.secureTextEntry ? "eye-off" : "eye"}
-              color={colors.prestigeBlue}
-              size={20}
-            />
-          </TouchableOpacity>
+          <Text>199/200</Text>
         </View>
-
         <View style={styles.buttons}>
           <TouchableOpacity>
             <View style={styles.signInButton}>
-              <Text style={styles.textSign}>Login</Text>
+              <Text style={styles.textSign}>Register</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginTop: 30 }}
-            onPress={() => navigation.navigate("Register")}
-          >
+          <TouchableOpacity style={{ marginTop: 20 }}>
             <View style={styles.registerButton}>
-              <Text style={styles.textSign}>Register</Text>
+              <Text style={styles.textSign}>Back</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -137,7 +97,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   footer: {
-    flex: 3,
+    flex: 5,
     backgroundColor: colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -173,6 +133,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: colors.prestigeBlue,
   },
+  multilineTextInput: {
+    flex: 1,
+    marginTop: 0,
+    paddingLeft: 10,
+    color: colors.prestigeBlue,
+  },
   errorMsg: {
     color: "#FF0000",
     fontSize: 14,
@@ -202,6 +168,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.white,
   },
+  image: {
+    width: 50,
+    height: 50,
+    backgroundColor: colors.peace,
+  },
 });
 
-export default LoginScreen;
+export default RegiterProfileScreen;
