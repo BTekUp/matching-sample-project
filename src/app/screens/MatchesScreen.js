@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, SwitchComponent } from 'react-native';
+import { Button, SwitchComponent, Alert } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import { ListItem, Avatar, Badge } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
@@ -13,7 +13,14 @@ function MatchesScreen(props) {
             friction={5}
             tension={40}
             activeScale={0.95}
-            button onPress={() => console.log('pressed1')}
+            button onPress={() => Alert.alert(
+                "Alert",
+                "Button is pressed"
+            )}
+            button onLongPress={ () => Alert.alert(
+                "Alert",
+                "button is longPressed"
+            )}
             >
                 <Avatar rounded source={{ uri: `https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/female/68.png` }} />
                 <ListItem.Content>
