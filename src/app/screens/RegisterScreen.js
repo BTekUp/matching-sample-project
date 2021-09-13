@@ -73,7 +73,7 @@ function RegisterScreen({ navigation }) {
             color="#fff"
             style={{ margin: 10 }}
           />
-          <Text style={styles.text_header}>Register</Text>
+          <Text style={styles.text_header}>Welcome!</Text>
         </View>
       </View>
       <View style={styles.footer}>
@@ -136,11 +136,11 @@ function RegisterScreen({ navigation }) {
             }
           >
             <View style={styles.signInButton}>
-              <Text style={styles.textSign}>Register</Text>
+              <Text style={styles.textSign}>Next</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ marginTop: 30 }}
+            style={{ marginTop: 20 }}
             onPress={() => navigation.navigate("Login")}
           >
             <View style={styles.registerButton}>
@@ -162,7 +162,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
   },
   logo: {
     flexDirection: "row",
@@ -212,7 +211,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 30,
   },
   signInButton: {
     width: 200,

@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     justifyContent: "flex-end",
-    paddingHorizontal: 20,
-    paddingBottom: 50,
+    // paddingHorizontal: 20,
+    // paddingBottom: 50,
   },
   logo: {
     flexDirection: "row",
