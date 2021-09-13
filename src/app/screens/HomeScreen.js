@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
-  Text,
   View,
-  Image,
-  ImageBackground,
-  Pressable,
   useWindowDimensions,
   TouchableOpacity,
 } from "react-native";
@@ -182,7 +178,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     zIndex: 1,
-    elevation: 1,
   },
   button: {
     width: 50,
@@ -198,7 +193,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.15,
     shadowRadius: 6.46,
-    elevation: 7,
     position: "absolute",
     marginTop: 10,
   },
